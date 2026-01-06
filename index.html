@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARYAN | Strategic Tech Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Yantra+Manav:wght@300;400&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --gold: #FFD700;
+            --text: #f0e6d2;
+            --transition: 1.5s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        /* --- RAMAYANA DYNAMIC BACKGROUND --- */
+        #dynamic-bg {
+            position: fixed; inset: 0; z-index: -2;
+            transition: var(--transition);
+            background: #0a0a2a; /* Default Bala Kanda Blue */
+        }
+
+        .mountain-silhouette {
+            position: fixed; bottom: 0; left: 0; width: 250%; height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent),
+                        url('https://i.imgur.com/8N4N3uX.png'); /* Replace with a silhouette mountain asset */
+            background-repeat: repeat-x; opacity: 0.3; z-index: -1;
+            transition: transform var(--transition);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body, html { height: 100%; overflow: hidden; color: var(--text); font-family: 'Outfit', sans-serif; }
+
+        /* --- CONTENT LAYERS --- */
+        .layer {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 0 10%;
+            opacity: 0; visibility: hidden; transform: translateY(50px) scale(0.95);
+            transition: var(--transition); text-align: center;
+        }
+        .layer.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+
+        /* --- TECH GENIUS COMPONENTS --- */
+        .intel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; max-width: 1100px; margin-top: 30px; }
+        .intel-card {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 25px; border-radius: 15px; backdrop-filter: blur(10px); text-align: left;
+            transition: 0.4s;
+        }
+        .intel-card:hover { border-color: var(--gold); background: rgba(255, 215, 0, 0.05); transform: translateY(-10px); }
+        
+        .skill-astra {
+            display: inline-block; padding: 8px 18px; margin: 5px; border: 1px solid var(--saffron);
+            border-radius: 50px; font-family: 'Cinzel Decorative'; font-size: 0.75rem; transition: 0.3s;
+        }
+        .skill-astra:hover { background: var(--saffron); color: #000; box-shadow: 0 0 20px var(--saffron); }
+
+        /* --- UI ELEMENTS --- */
+        h1 { font-family: 'Cinzel Decorative'; font-size: 6rem; background: linear-gradient(to bottom, var(--gold), var(--saffron)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-footer { position: fixed; bottom: 40px; display: flex; gap: 30px; z-index: 1000; left: 50%; transform: translateX(-50%); }
+        .conch-btn { background: transparent; border: 2px solid var(--gold); color: var(--gold); padding: 12px 35px; font-family: 'Cinzel Decorative'; cursor: pointer; letter-spacing: 3px; border-radius: 50px; transition: 0.4s; }
+        .conch-btn:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold); }
+        #cursor { width: 20px; height: 20px; border: 2px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference; }
+
+        #gate { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div id="dynamic-bg"></div>
+    <div class="mountain-silhouette" id="mountain"></div>
+
+    <div id="gate" onclick="initDharma()">
+        <div style="width: 120px; height: 120px; border: 3px dashed var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: rotate 10s linear infinite;">
+            <span style="font-family: 'Cinzel Decorative'; color: var(--gold); font-size: 2rem;">ॐ</span>
+        </div>
+        <p style="color: var(--saffron); margin-top: 30px; letter-spacing: 5px; font-family: 'Cinzel Decorative';">INITIATING TECH-AVATAR SEQUENCE</p>
+    </div>
+
+    <div class="layer active" id="layer-1">
+        <p style="color: var(--gold); letter-spacing: 8px; font-size: 0.8rem;">BALA KANDA // THE ORIGIN</p>
+        <h1>ARYAN</h1>
+        <p style="font-size: 1.5rem; color: var(--saffron); font-family: 'Cinzel Decorative';">System Architect & Tech Visionary</p>
+        <div style="max-width: 600px; margin-top: 20px; color: #888; line-height: 1.6;">
+            "Engineering taught me logic. Failure taught me humility. I don't just build software; I engineer ecosystems that respect the balance of Dharma and Technology."
+        </div>
+    </div>
+
+    <div class="layer" id="layer-2">
+        <h2 style="font-family: 'Cinzel Decorative'; font-size: 2.5rem; color: #4ade80;">ARANYA KANDA // THE STRUGGLE</h2>
+        <div style="max-width: 800px; text-align: left; background: rgba(0,0,0,0.5); padding: 40px; border-left: 4px solid #4ade80; backdrop-filter: blur(10px);">
+            <p style="font-size: 1.2rem; line-height: 1.8;">
+                My journey began in the "Vanvas" of self-doubt. Moments where silence was the only answer to my hard work. But I learned: <b>Consistency compounds.</b><br><br>
+                <span style="color: #4ade80;">The Genius Edge:</span> I treat debugging like a puzzle and system architecture like a fortress. I bring a <b>Mathematical Foundation</b> to every code sprint, ensuring reliability under pressure.
+            </p>
+        </div>
+    </div>
+
+    <div class="layer" id="layer-3">
+        <h2 style="font-family: 'Cinzel Decorative'; font-size: 2.5rem; color: #ff4d4d;">DIVINE ASTRAS // TECH ARSENAL</h2>
+        <p style="color: #ff9999; margin-bottom: 30px;">High-Frequency Competencies for Global Impact</p>
+        
+        <div style="max-width: 900px;">
+            <div class="skill-astra">PYTHON (Expert)</div>
+            <div class="skill-astra">AI / MACHINE LEARNING</div>
+            <div class="skill-astra">JAVA</div>
+            <div class="skill-astra">C / C++</div>
+            <div class="skill-astra">SYSTEM DESIGN</div>
+            <div class="skill-astra">REACT.JS</div>
+            <div class="skill-astra">HTML5 / CSS3</div>
+            <div class="skill-astra">DATABASE ARCHITECTURE</div>
+            <div class="skill-astra">AGILE / SCRUM</div>
+            <div class="skill-astra">NEURAL NETWORKS</div>
+            <div class="skill-astra">IOT SYSTEMS</div>
+            <div class="skill-astra">CYBER LOGIC</div>
+        </div>
+
+        <div class="intel-grid">
+            <div class="intel-card">
+                <h4 style="color:#ff4d4d">Scalability</h4>
+                <p style="font-size: 0.85rem;">Designing systems that handle 10x growth without architectural fatigue.</p>
+            </div>
+            <div class="intel-card">
+                <h4 style="color:#ff4d4d">Clean Code</h4>
+                <p style="font-size: 0.85rem;">Writing maintainable, self-documenting code that teams love to work with.</p>
+            </div>
+            <div class="intel-card">
+                <h4 style="color:#ff4d4d">Speed-to-Market</h4>
+                <p style="font-size: 0.85rem;">Rapid prototyping from conceptual logic to a functional, secure MVP.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer" id="layer-4">
+        <h2 style="font-family: 'Cinzel Decorative'; font-size: 2.5rem; color: var(--gold);">KISHKINDHA // KALPAVRIKSHA</h2>
+        <p style="color: var(--saffron); margin-bottom: 20px;">The Growth of Collective Wisdom</p>
+        <canvas id="tree-canvas" width="500" height="400" style="border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 50%;"></canvas>
+        <p style="margin-top: 20px; font-style: italic; color: #888;">"Every skill is a branch. Every thought is a leaf. I build to understand."</p>
+    </div>
+
+    <div class="layer" id="layer-5">
+        <h2 style="font-family: 'Cinzel Decorative'; font-size: 3rem; color: #fff; text-shadow: 0 0 20px var(--gold);">RAM RAJYA // THE VISION</h2>
+        <div style="max-width: 700px; background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 30px; border: 1px solid var(--gold); margin-top: 20px;">
+            <p style="font-size: 1.4rem; font-style: italic; color: var(--gold); margin-bottom: 20px;">
+                "I am looking for an A-Team that values deep logic and human-centric innovation."
+            </p>
+            <p style="letter-spacing: 5px; font-weight: 900; color: #fff;">ARYANRAJ192002@GMAIL.COM</p>
+            <p style="margin-top: 10px; color: #aaa;">Recruitment Status: <span style="color: #00ff00;">Active & Innovative</span></p>
+            <button class="conch-btn" style="margin-top: 30px;" onclick="window.location.reload()">RE-INITIATE MEDITATION</button>
+        </div>
+    </div>
+
+    <div class="nav-footer">
+        <button class="conch-btn" onclick="nav(-1)">RECALL</button>
+        <button class="conch-btn" onclick="nav(1)">ASCEND</button>
+    </div>
+
+    <script>
+        let cur = 1;
+        const total = 5;
+        const bg = document.getElementById('dynamic-bg');
+        const mountain = document.getElementById('mountain');
+
+        function initDharma() {
+            document.getElementById('gate').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('gate').style.display = 'none';
+                growTree(250, 400, 80, 0, 10);
+            }, 1000);
+        }
+
+        function nav(dir) {
+            if((dir === 1 && cur < total) || (dir === -1 && cur > 1)) {
+                document.getElementById(`layer-${cur}`).classList.remove('active');
+                cur += dir;
+                document.getElementById(`layer-${cur}`).classList.add('active');
+                updateMechanics();
+            }
+        }
+
+        function updateMechanics() {
+            // Parallax Mountain Shift
+            mountain.style.transform = `translateX(${(cur-1) * -20}%)`;
+
+            // RAMAYANA STORY MECHANICS
+            switch(cur) {
+                case 1: // Bala Kanda
+                    bg.style.background = "#0a0a2a";
+                    break;
+                case 2: // Aranya Kanda
+                    bg.style.background = "#051a05";
+                    break;
+                case 3: // The Astras
+                    bg.style.background = "#2a0505";
+                    break;
+                case 4: // Kishkindha
+                    bg.style.background = "#1a1305";
+                    break;
+                case 5: // Ram Rajya
+                    bg.style.background = "linear-gradient(to bottom, #2a1a05, #4d3300)";
+                    break;
+            }
+        }
+
+        // --- TREE OF WISDOM (FRACTAL) ---
+        function growTree(x, y, len, angle, width) {
+            const ctx = document.getElementById('tree-canvas').getContext('2d');
+            ctx.beginPath(); ctx.save();
+            ctx.strokeStyle = "#FFD700"; ctx.lineWidth = width;
+            ctx.translate(x, y); ctx.rotate(angle * Math.PI/180);
+            ctx.moveTo(0, 0); ctx.lineTo(0, -len); ctx.stroke();
+            if (len < 10) { ctx.restore(); return; }
+            growTree(0, -len, len*0.75, angle-20, width*0.7);
+            growTree(0, -len, len*0.75, angle+20, width*0.7);
+            ctx.restore();
+        }
+
+        window.addEventListener('mousemove', e => {
+            const c = document.getElementById('cursor');
+            c.style.left = e.clientX + 'px';
+            c.style.top = e.clientY + 'px';
+        });
+
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </script>
+</body>
+</html>
